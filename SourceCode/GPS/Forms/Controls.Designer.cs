@@ -2011,6 +2011,19 @@ namespace AgOpenGPS
             Application.Restart();
             Environment.Exit(0);
         }
+        private void menuLanguageCzech_Click(object sender, EventArgs e)
+        {
+            if (isJobStarted)
+            {
+                var form = new FormTimedMessage(2000, gStr.gsFieldIsOpen, gStr.gsCloseFieldFirst);
+                form.Show();
+                return;
+            }
+            SetLanguage("cs");
+            MessageBox.Show(gStr.gsProgramWillExitPleaseRestart);
+            Application.Restart();
+            Environment.Exit(0);
+        }
         private void menuLanguageTest_Click(object sender, EventArgs e)
         {
             if (isJobStarted)
@@ -2038,6 +2051,7 @@ namespace AgOpenGPS
             menuLanguageUkranian.Checked = false;
             menuLanguageSlovak.Checked = false;
             menuLanguagePolish.Checked = false;
+            menuLanguageCzech.Checked = false;
 
             menuLanguageTest.Checked = false;
 
@@ -2081,6 +2095,10 @@ namespace AgOpenGPS
 
                 case "pl":
                     menuLanguagePolish.Checked = true;
+                    break;
+
+                case "cs":
+                    menuLanguageCzech.Checked = true;
                     break;
 
                 case "af":
